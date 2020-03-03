@@ -6,6 +6,8 @@
    #define EXPORT
  #elif defined(STATICLIB)
    #define EXPORT
+ #elif defined(_WINDOWS)
+   #define EXPORT __declspec(dllexport)
  #else
    #define EXPORT __attribute__((visibility("default")))
  #endif
@@ -14,6 +16,8 @@
 #ifndef AliasExport
  #if defined(__EMSCRIPTEN__) || defined(__APPLE__)
   #define AliasExport(name)
+ #elif defined(_WINDOWS)
+  #define AliasExport(name)   __attribute__((alias(name))) __attribute__((visibility("default")))
  #else
   #define AliasExport(name)   __attribute__((alias(name))) EXPORT
  #endif
