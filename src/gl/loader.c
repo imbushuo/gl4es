@@ -28,6 +28,8 @@ void *open_lib(const char **names, const char *override) {
 // PATH_MAX
 #ifdef __linux__
 #include <linux/limits.h>
+#elif defined(_WINDOWS)
+#define PATH_MAX MAX_PATH
 #else
 #include <limits.h>
 #endif

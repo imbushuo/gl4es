@@ -5,6 +5,8 @@
 #include "gl4es.h"
 #include "gles.h"
 #include "logs.h"
+#include "dlfcn.h"
+
 
 #ifndef NOEGL
 //Typedef for egl to be able to call LOAD_EGL...
@@ -76,7 +78,7 @@ typedef EGLSurface (*eglCreateStreamProducerSurfaceKHR_PTR)(EGLDisplay dpy, EGLC
 #ifdef AMIGAOS4
 #include "../agl/amigaos.h"
 #else
-#include <dlfcn.h>
+// #include <dlfcn.h>
 #endif
 #include <stdio.h>
 #include <stdlib.h>
@@ -226,5 +228,13 @@ extern void *gles, *egl, *bcm_host, *vcos, *gbm, *drm;
         LOAD_RAW_SILENT(gles, name, ((hardext.esversion==1)?((void*)egl_eglGetProcAddress(#name"OES")):((void*)dlsym(gles, #name)))); \
     }
 #endif // defined(AMIGAOS4) || defined(NOEGL)
+
+#ifdef far
+#undef far
+#endif
+
+#ifdef near
+#undef near
+#endif
 
 #endif // _GL4ES_LOADER_H_
