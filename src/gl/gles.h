@@ -1,6 +1,9 @@
 #ifndef _GL4ES_GLES_H_
 #define _GL4ES_GLES_H_
 
+#if defined(_WINDOWS)
+#include <stdint.h>
+#endif
 #include <GLES/glplatform.h>
 
 // Define for GLES 1.1

@@ -13,6 +13,14 @@
 #include "texture.h"
 #include "oldprogram.h"
 
+#ifdef far
+#undef far
+#endif
+
+#ifdef near
+#undef near
+#endif
+
 typedef struct {
     GLboolean line_stipple,
               auto_normal,

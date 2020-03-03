@@ -1,8 +1,10 @@
-#if !defined(ANDROID) && !defined(AMIGAOS4) && !defined(__EMSCRIPTEN__) && !defined(__APPLE__)
+#if !defined(ANDROID) && !defined(AMIGAOS4) && !defined(__EMSCRIPTEN__) && !defined(__APPLE__) && !defined(_WINDOWS)
 #include <execinfo.h>
 #endif
 #include <stdio.h>
+#if !defined(_WINDOWS)
 #include <unistd.h>
+#endif
 #include "../../version.h"
 #include "../glx/glx_gbm.h"
 #include "../glx/streaming.h"
